@@ -83,7 +83,7 @@
                                             <!-- <a onclick="return confirm('are you sure??')" href=""
                                                 class=" btn btn-success btn-sm mt-3 ">Simpan</a> -->
                                         </div>
-                                        <div class="mb-3 row">
+                                        <div class="mb-3 row mt-4">
                                             <div class="col-sm-12">
                                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
