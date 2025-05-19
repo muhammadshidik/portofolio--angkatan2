@@ -58,7 +58,6 @@
                                 <div class="table-responsive">
                                     <div align="right" class=" mb-3">
                                         <a href="tambah-user" class=" btn btn-primary">Tambah</a>
-
                                     </div>
                                     <table class="table table-bordered table-striped">
                                         <thead>
@@ -75,10 +74,10 @@
                                                 <td>Joko</td>
                                                 <td>joko@gmail.com</td>
                                                 <td>
-                                                    <a href="" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="" class="btn btn-outline-success btn-sm">Edit</a>
 
                                                     <a onclick="return confirm('are you sure??')" href=""
-                                                        class=" btn btn-warning btn-sm">Edit</a>
+                                                        class=" btn btn-outline-danger btn-sm">Hapus</a>
                                                 </td>
                                             </tr>
                                         </tbody>

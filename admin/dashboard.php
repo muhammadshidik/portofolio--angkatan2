@@ -52,7 +52,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                ashboard d
+                                Dashboard
                             </div>
                             <div class="card-body"></div>
                         </div>

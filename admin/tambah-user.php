@@ -61,7 +61,7 @@
                                             <label for="">Nama</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Masukkan nama anda..">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Anda">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -69,8 +69,7 @@
                                             <label for="">Email</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control"
-                                                placeholder="Masukkan Email anda..">
+                                            <input type="email" class="form-control" placeholder="Masukkan Email Anda">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -79,16 +78,13 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control"
-                                                placeholder="Masukkan Password anda..">
-                                            <!-- <a onclick="return confirm('are you sure??')" href=""
-                                                class=" btn btn-success btn-sm mt-3 ">Simpan</a> -->
+                                                placeholder="Masukkan Password Anda">
                                         </div>
-                                        <div class="mb-3 row mt-4">
+                                        <div class="row mt-4">
                                             <div class="col-sm-12">
                                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </form>
                             </div>
