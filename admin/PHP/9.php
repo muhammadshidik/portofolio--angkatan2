@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if (empty($_SESSION['email'])) {
+    header("location:8.php?access=failed");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +21,7 @@
         <header class="shadow">
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">CMS Siddiq</a>
+                    <a class="navbar-brand" href="#">CMS Reza</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -40,6 +47,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="user.php">User</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="keluar.php">
+                                    Keluar
+                                </a>
+                            </li>
                         </ul>
 
                     </div>
@@ -52,47 +64,12 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                Data User
+                                Dashboard
                             </div>
                             <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-2">
-                                            <label for="">Nama </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="text"
-                                                class="form-control"
-                                                placeholder="Masukkan nama anda">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-2">
-                                            <label for="">Email </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="email"
-                                                class="form-control"
-                                                placeholder="Masukkan email anda">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-2">
-                                            <label for="">Password </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="password"
-                                                class="form-control"
-                                                placeholder="Masukkan password anda">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-12">
-                                            <button type="submit"
-                                            class="btn btn-primary">Simpan</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <div align="right">
+                                    <h6>Selamat Datang <?php echo isset($_SESSION['email']) ? $_SESSION['email'] : '' ?> </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
