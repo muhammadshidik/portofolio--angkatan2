@@ -14,7 +14,7 @@
 
 <body>
     <div class="wrapper">
-        <?php include 'inc/header.php' ?>
+        <?php include 'inc/header.php'; ?>
         <div class="content mt-5">
             <div class="container">
                 <div class="row">

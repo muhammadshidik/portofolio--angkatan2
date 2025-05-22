@@ -1,9 +1,9 @@
 <?php
 session_start();
-$name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+$_name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 
 //untuk membuat
-if (!$name) {
+if (!$_name) {
     header("location:index.php?access=failed");
 }
 
@@ -13,9 +13,7 @@ if (!$name) {
     <nav class="navbar navbar-expand-lg bg-body-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">CMS Siddiq</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,9 +21,9 @@ if (!$name) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Page
                         </a>
                         <ul class="dropdown-menu">
@@ -43,14 +41,18 @@ if (!$name) {
                 </ul>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <?php echo $name ?>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <!-- <?= $_name ?> -->
+                            <?php echo $_name ?>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="php/keluar.php">Keluar</a></li>
                         </ul>
+                    </li>
                 </ul>
+
+
+
             </div>
         </div>
     </nav>

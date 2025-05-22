@@ -51,7 +51,7 @@ if (isset($_POST['edit'])) {
         <header class="shadow">
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">CMS Reza</a>
+                    <a class="navbar-brand" href="#">CMS Siddiq</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -101,7 +101,7 @@ if (isset($_POST['edit'])) {
                                             <input required name="name" type="text"
                                                 class="form-control"
                                                 placeholder="Masukkan nama anda"
-                                                value="<?= $rowEdit['name'] ?>">
+                                                value="<?= isset($_GET['edit']) ? $rowEdit['name'] : '' ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -112,7 +112,7 @@ if (isset($_POST['edit'])) {
                                             <input required name="email" type="email"
                                                 class="form-control"
                                                 placeholder="Masukkan email anda"
-                                                value="<?= $rowEdit['email'] ?>">
+                                                value="<?= isset($_GET['edit']) ? $rowEdit['email'] : '' ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -142,5 +142,3 @@ if (isset($_POST['edit'])) {
 </body>
 
 </html>
-
-

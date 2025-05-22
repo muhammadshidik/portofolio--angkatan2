@@ -2,28 +2,50 @@
 session_start();
 include 'config/koneksi.php';
 
+// if (isset($_POST['email']) && isset($_POST['password'])) {
+//     $email = $_POST['email'];
+//     $password = sha1($_POST['password']);
+
+//select /tampilkan semua data dari table user dimana email diambil dari orang 
+//input di inputan email 
+
+//membuat kueri user
+// $query  = mysqli_query($config, "SELECT * FROM users 
+// WHERE email='$email' AND  password ='$password'");
+
+//apakah / jika betul email yang input user adalah email yang ada ditable user
+
+// if (mysqli_num_rows($query)  > 0) {
+//     $row = mysqli_fetch_assoc($query);
+//     $_SESSION['EMAIL'] = $row['email'];
+//     $_SESSION['ID_USER'] = $row['id'];
+//     header("location:dashboard.php");
+// } else {
+//     header("location:index.php?error=login");
+// }
+// }
+
+// Kode Fikri
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = sha1($_POST['password']);
 
-    //select /tampilkan semua data dari table user dimana email diambil dari orang 
-    //input di inputan email 
+    // Check if the email and password are empty
 
-    //membuat kueri user
-   $query  = mysqli_query($config, "SELECT * FROM users 
-    WHERE email='$email' AND  password ='$password'");
-
-    //apakah / jika betul email yang input user adalah email yang ada ditable user
-
-     if (mysqli_num_rows($query)  > 0) {
+    $query = mysqli_query($config, "SELECT * FROM users WHERE email='$email' AND password='$password'");
+    // Check if the user exists
+    if (mysqli_num_rows($query) > 0) {
         $row = mysqli_fetch_assoc($query);
-        $_SESSION['NAME'] = $row['name'];
-        $_SESSION['ID_USER'] = $row['id'];
-        header("location:dashboard.php");
+        // Check if the password is correct
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['uuid'] = $row['id'];
+        header('Location: dashboard.php');
     } else {
-        header("location:index.php?error=login");
+        // Redirect to the login page with an error message
+        header('Location: index.php?login=failed');
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +53,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form | Portofolio Reza</title>
+    <title>Login Form | Portofolio Siddiq</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
@@ -52,12 +74,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
                                         <input type="email" class="form-control"
-                                            name="email" placeholder="Ex:admin@gmail.com">
+                                            name="email" id="email" placeholder="Ex:admin@gmail.com">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Password</label>
                                         <input type="password" class="form-control"
-                                            name="password" placeholder="Masukkan Password Anda">
+                                            name="password" id="password" placeholder="Masukkan Password Anda">
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-primary">Login</button>
@@ -77,5 +99,3 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 </body>
 
 </html>
-
-

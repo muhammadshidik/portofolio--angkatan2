@@ -16,11 +16,12 @@ if (isset($_GET['delete'])) {
     header("location:user.php?hapus=berhasil");
 }
 
-//edit
-$header = isset($_GET['edit']) ? "edit" : "Tambah";
-$id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
-$queryEdit = mysqli_query($config, "SELECT FROM users WHERE id='$id_user'");
-$rowEdit = mysqli_fetch_assoc($queryEdit);
+// //edit
+// $header = isset($_GET['edit']) ? "edit" : "Tambah";
+// $id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
+// $queryEdit = mysqli_query($config, "SELECT FROM users WHERE id='$id_user'");
+// $rowEdit = mysqli_fetch_assoc($queryEdit);
+// 
 ?>
 
 <!DOCTYPE html>
