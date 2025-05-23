@@ -35,9 +35,20 @@ if (!$_name) {
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="user.php">User</a>
-                    </li>
+                    <?php
+                    $decrypt = base64_decode($_GET['role']);
+                    if (isset($_GET['role']) && $decrypt == 1) {
+
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="user.php?role=<?php echo base64_encode($_SESSION['LEVEL']) ?>">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.php?role=<?php echo base64_encode($_SESSION['LEVEL']) ?>&page=manage-profile">Profile</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">

@@ -21,14 +21,13 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                Dashboard
                             </div>
                             <div class="card-body">
-                                <div align="right">
-                                    <h6>Selamat Datang
-                                        <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : '' ?>
-                                    </h6>
-                                </div>
+                                <?php
+                                if (isset($_GET['page']) && file_exists("content/" . $_GET['page'] . ".php")) {
+                                    include "content/" . $_GET['page'] . ".php";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
