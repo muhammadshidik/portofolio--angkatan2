@@ -47,9 +47,20 @@ if (isset($_GET['delete'])) {
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                Data User
                             </div>
                             <div class="card-body">
+                                <?php
+                                if (isset($_GET['page'])) {
+                                    //jika file ada
+                                    if (file_exists("content/" . $_GET['page'] . ".php")) {
+                                        include('content/' . $_GET['page'] . ".php");
+                                    } else {
+                                        include "content/notfound.php";
+                                    }
+                                } else {
+                                    include 'content/home.php';
+                                }
+                                ?>
                                 <div class="table-responsive">
                                     <div align="right" class="mb-3">
                                         <a href="tambah-user.php?level=<?php echo base64_encode($_SESSION['LEVEL']) ?>" class="btn btn-primary">Tambah</a>

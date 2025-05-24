@@ -1,14 +1,3 @@
-<?php
-session_start();
-$_name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
-
-//untuk membuat
-if (!$_name) {
-    header("location:index.php?access=failed");
-}
-
-?>
-
 <header class="shadow">
     <nav class="navbar navbar-expand-lg bg-body-white">
         <div class="container-fluid">
@@ -27,7 +16,7 @@ if (!$_name) {
                             Page
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="?page=add-about">Profile</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -35,25 +24,32 @@ if (!$_name) {
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <?php
-                    $decrypt = base64_decode($_GET['role']);
-                    if (isset($_GET['role']) && $decrypt == 1) {
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=user">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-skill">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-gallery">Galleries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=manage-about">About US</a>
+                    </li>
 
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="user.php?role=<?php echo base64_encode($_SESSION['LEVEL']) ?>">User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php?role=<?php echo base64_encode($_SESSION['LEVEL']) ?>&page=manage-profile">Profile</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
                 </ul>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!-- <?= $_name ?> -->
                             <?php echo $_name ?>
                         </a>
                         <ul class="dropdown-menu">

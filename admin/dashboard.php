@@ -1,3 +1,15 @@
+<?php
+session_start();
+$_name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+
+//untuk membuat
+if (!$_name) {
+    header("location:index.php?access=failed");
+}
+include 'config/koneksi.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,15 +29,24 @@
         <?php include 'inc/header.php'; ?>
         <div class="content mt-5">
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center">
+
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
+                                <?php echo isset($_GET['page']) ? str_replace("-", " ",  ucfirst($_GET['page'])) : 'Home' //untuk menambahkan nama disetiap halaman 
+                                ?>
                             </div>
                             <div class="card-body">
                                 <?php
-                                if (isset($_GET['page']) && file_exists("content/" . $_GET['page'] . ".php")) {
-                                    include "content/" . $_GET['page'] . ".php";
+                                if (isset($_GET['page'])) {
+                                    //jika file ada
+                                    if (file_exists("content/" . $_GET['page'] . ".php")) {
+                                        include("content/" . $_GET['page'] . ".php");
+                                        // } else {
+                                        //     include "content/notfound.php";
+                                        // }
+                                    }
                                 }
                                 ?>
                             </div>
