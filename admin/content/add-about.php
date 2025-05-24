@@ -1,44 +1,64 @@
 <?php
+// jika user/pengguna mencet tombol simpan
+// ambil data dari inputan, email, nama dan password
+// masukkan ke dalam table user (name, email, password) nilainya dari masing-masing inputan 
 //fungsi insert
-include "config/koneksi.php";
+
+
+// include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
     $profile = $_POST['profile'];
     $email = $_POST['email'];
+    $phone  = $_POST['phone'];
+    $status  = $_POST['status'];
+    $skills = $_POST['skills'];
     //proses simpan foto
     $photo = $_FILES['photo'];
-    // var_dump($photo);
-    if ($photo['error'] == 0) {
-        $fileName = uniqid() . "_" . basename($photo['name']);
-        $filePath = "uploads/" . $fileName;
-        move_uploaded_file($photo['tmp_name'], $filePath);
+    $size  = $_FILES['photo']['size'];
+// .png, jpg, jpeg
+    $ekstensi = ['png', 'jpg', 'jpeg'];
+    // apakah user mengupload gambar dengan ekstensi tersebut, jika iya masukkan gambar ke table dan folder, jika tidak
+    // error, ekstensi tidak ditemukan
+    // in_array = 
+
+$ext = pathinfo($photo, PATHINFO_EXTENSION);
+    if (!in_array($ext, $ekstensi)) {
+        $error[] = "Mohon maaf, ekstensi file tidak ditemukan";
+    } else {
+        $query = mysqli_query($config, "INSERT INTO abouts (name, profil, email, phone, status, skills, photo)
+         VALUES ('$name','$profil','$email', '$phone','$status','$skills','$photo')");
+        if ($query) {
+            header("location:?page=team&tambah=berhasil");
+        }
     }
-    $insertQ = mysqli_query($config, "INSERT INTO abouts(name, profile, email,  photo) VAlUES ('$name','$profile','$email','$fileName')");
-    if ($insertQ) {
-        // header("location:dashboard.php?role=" . base64_encode($_SESSION['LEVEL']) . "&page=manage-profile");
-    }
+    print_r($error);
+    die;
 }
 
-if (isset($_GET['del'])) {
-    $idDel = $_GET['del'];
-    $selectPhoto = mysqli_query($config, "SELECT photo FROM abouts WHERE id= $idDel");
-    $rowPhoto = mysqli_fetch_assoc($selectPhoto);
-    if (isset($rowPhoto['photo'])) {
-        @unlink("uploads/" . $rowPhoto['photo']);
-    }
-    $delete = mysqli_query($config, "DELETE FROM abouts WHERE id= $idDel");
+//revisian ambil dari pak reza
+$header = isset($_GET['edit']) ? "Edit" : "Tambah";
+$id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
+$queryEdit = mysqli_query($config, "SELECT * FROM users WHERE id='$id_user'");
+$rowEdit  = mysqli_fetch_assoc($queryEdit);
 
-    if ($delete) {
-        // header("location:?level=" . base64_encode($_SESSION['LEVEL']) . "&page=manage-profile");
-        // echo "<script></script>";
+if (isset($_POST['edit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = sha1($_POST['password']);
+
+    if ($password == '') {
+        $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email' WHERE id='$id_user'");
+    }
+    $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email', 
+    password='$password' WHERE id='$id_user'");
+    if ($queryUpdate) {
+        header("location:user.php?ubah=berhasil");
     }
 }
-$selectProfile = mysqli_query($config, "SELECT * FROM abouts");
-$row = mysqli_fetch_assoc($selectProfile);
 ?>
 
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="m-2" style="width:55%">
+<!-- <form action="" method="post" enctype="multipart/form-data">
         <label class="form-label">nama </label>
         <input type="text" value="<?php echo !isset($row['name']) ? '' : $row['name'] ?>" class="form-control" name="name">
 
@@ -61,6 +81,8 @@ $row = mysqli_fetch_assoc($selectProfile);
         <?php if (empty($row['profile_name'])) {
         ?>
             <button type="submit" name="simpan" class="btn btn-primary mt-2">simpan</button>
+
+
         <?php
         } else {
         ?>
@@ -68,5 +90,95 @@ $row = mysqli_fetch_assoc($selectProfile);
             level=<?php echo base64_encode($_SESSION['LEVEL']) ?>& page=manage-profile>&del=<?php echo $row['id'] ?>" class="btn btn-danger mt-2">Delete</a>
         <?php
         } ?>
+</form> -->
+
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Nama * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="name" type="text"
+                class="form-control"
+                placeholder="Masukkan nama anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['name'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Jabatan * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="position_name" type="text"
+                class="form-control"
+                placeholder="Masukkan jabatan anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['profile'] : '' ?>">
+        </div>
+    </div>
+    
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Email * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="position_name" type="text"
+                class="form-control"
+                placeholder="Masukkan email anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['email'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">No.Hp * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="position_name" type="text"
+                class="form-control"
+                placeholder="Masukkan nomor hp anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['phone'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Kemampuan * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="position_name" type="text"
+                class="form-control"
+                placeholder="Masukkan kemampuan anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['skills'] : '' ?>">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+    <div class="col-sm-10">
+        <label class="form-label">Deskripsi * </label>
+        <textarea class="form-control mb-3" style="width:450px ; height: 150px ; margin-left: 215px" value="<?php echo !isset($_GET['edit']) ? $rowEdit['description'] :'' ?>"cols="30" rows="5">
+         </textarea>
+      </div>
+   </div>
+
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Foto </label>
+        </div>
+        <div class="col-sm-10">
+            <input name="photo" type="file">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Status </label>
+        </div>
+        <div class="col-sm-10">
+            <input type="radio" name="status" value="1" checked> Publish
+            <input type="radio" name="status" value="0"> Draft
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-12">
+            <button name="<?= isset($_GET['edit']) ? 'edit' : 'simpan'; ?>" type="submit"
+                class="btn btn-primary">Simpan</button>
+        </div>
     </div>
 </form>
