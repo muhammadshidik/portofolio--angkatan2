@@ -4,7 +4,6 @@
 // masukkan ke dalam table user (name, email, password) nilainya dari masing-masing inputan 
 //fungsi insert
 
-
 // include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
@@ -12,6 +11,7 @@ if (isset($_POST['simpan'])) {
     $email = $_POST['email'];
     $phone  = $_POST['phone'];
     $status  = $_POST['status'];
+    $description = $_POST['description'];
     $skills = $_POST['skills'];
     //proses simpan foto
     $photo = $_FILES['photo']['name'];
@@ -26,8 +26,8 @@ $ext = pathinfo($photo, PATHINFO_EXTENSION);
     if (!in_array($ext, $ekstensi)) {
         $error[] = "Mohon maaf, ekstensi file tidak ditemukan";
     } else {
-        $query = mysqli_query($config, "INSERT INTO abouts (name, profile, email, phone, skills, photo, status)
-         VALUES ('$name','$profile','$email','$phone','$status','$skills','$photo')");
+        $query = mysqli_query($config, "INSERT INTO abouts (name, profile, email, phone, photo, status, skills, description)
+         VALUES ('$name','$profile','$email','$phone','$photo','$status','$skills','$description')");
         if ($query) {
             header("location:?page=about&tambah=berhasil");
         }
@@ -39,23 +39,24 @@ $ext = pathinfo($photo, PATHINFO_EXTENSION);
 //revisian ambil dari pak reza
 $header = isset($_GET['edit']) ? "Edit" : "Tambah";
 $id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
-$queryEdit = mysqli_query($config, "SELECT * FROM users WHERE id='$id_user'");
+$queryEdit = mysqli_query($config, "SELECT * FROM abouts WHERE id='$id_user'");
 $rowEdit  = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
+    $profile = $_POST['profile'];
     $email = $_POST['email'];
-    $password = sha1($_POST['password']);
+    $phone  = $_POST['phone'];
+    $status  = $_POST['status'];
+    $skills = $_POST['skills'];
 
-    if ($password == '') {
-        $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email' WHERE id='$id_user'");
-    }
-    $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email', 
-    password='$password' WHERE id='$id_user'");
+    $queryUpdate = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile', email='$email', phone='phone',status='$status', skills='$skills' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:about.php?ubah=berhasil");
+        header("location:content/about.php?ubah=berhasil");
     }
 }
+
+
 ?>
 
 

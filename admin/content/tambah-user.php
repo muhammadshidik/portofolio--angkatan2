@@ -1,5 +1,7 @@
 <?php
-
+// jika user/pengguna mencet tombol simpan
+// ambil data dari inputan, email, nama dan password
+// masukkan ke dalam table user (name, email, password) nilainya dari masing-masing inputan 
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -9,6 +11,7 @@ if (isset($_POST['simpan'])) {
      VALUES ('$name','$email','$password')");
     if ($query) {
         header("location:user.php?tambah=berhasil");
+        exit;
     }
 }
 
@@ -22,6 +25,9 @@ if (isset($_POST['edit'])) {
     $email = $_POST['email'];
     $password = sha1($_POST['password']);
 
+    if ($password == '') {
+        $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email' WHERE id='$id_user'");
+    }
     $queryUpdate = mysqli_query($config, "UPDATE users SET name='$name', email='$email', 
     password='$password' WHERE id='$id_user'");
     if ($queryUpdate) {

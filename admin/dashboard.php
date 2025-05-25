@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+$_name = isset($_SESSION['name']) ? $_SESSION['name'] : '';
 
 //untuk membuat
 if (!$_name) {
@@ -23,10 +23,9 @@ include 'config/koneksi.php';
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
     </script>
 </head>
-
 <body>
     <div class="wrapper">
-        <?php include 'inc/header.php'; ?>
+        <?php include 'inc/header.php';?>
         <div class="content mt-5">
             <div class="container">
                 <div class="row justify-content-center">
@@ -40,13 +39,14 @@ include 'config/koneksi.php';
                             <div class="card-body">
                                 <?php
                                 if (isset($_GET['page'])) {
-                                    //jika file ada
+                                    // jika file ada 
                                     if (file_exists("content/" . $_GET['page'] . ".php")) {
-                                        include("content/" . $_GET['page'] . ".php");
-                                        // } else {
-                                        //     include "content/notfound.php";
-                                        // }
+                                        include('content/' . $_GET['page'] . ".php");
+                                    } else {
+                                        include "content/notfound.php";
                                     }
+                                } else {
+                                    include 'content/home.php';
                                 }
                                 ?>
                             </div>

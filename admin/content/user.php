@@ -1,9 +1,6 @@
 <?php
-$query = mysqli_query($config, "SELECT * FROM users WHERE deleted_at =  0 ORDER BY id DESC");
+$query = mysqli_query($config, "SELECT * FROM users ORDER BY id DESC");
 $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-
-//tombol hapus dari database
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
@@ -14,7 +11,7 @@ if (isset($_GET['delete'])) {
 
 <div class="table-responsive">
     <div align="right" class="mb-3">
-        <a href="tambah-user" class="btn btn-primary">Tambah</a>
+        <a href="?page=tambah-user" class="btn btn-primary">Tambah</a>
     </div>
     <table class="table table-bordered table-striped">
         <thead>

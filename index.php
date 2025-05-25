@@ -7,12 +7,6 @@ $queryProfile = mysqli_query($config, "SELECT * FROM abouts ORDER BY id DESC");
 $rowProfile = mysqli_fetch_assoc($queryProfile);
 
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
