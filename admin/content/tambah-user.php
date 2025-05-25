@@ -28,3 +28,44 @@ if (isset($_POST['edit'])) {
         header("location:user.php?ubah=berhasil");
     }
 }
+?>
+<form action="" method="post">
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Nama * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="name" type="text"
+                class="form-control"
+                placeholder="Masukkan nama anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['name'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Email * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="email" type="email"
+                class="form-control"
+                placeholder="Masukkan email anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['email'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Password *</label>
+        </div>
+        <div class="col-sm-10">
+            <input name="password" type="password"
+                class="form-control" value=""
+                placeholder="Masukkan password anda">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-12">
+            <button name="<?= isset($_GET['edit']) ? 'edit' : 'simpan'; ?>" type="submit"
+                class="btn btn-primary">Simpan</button>
+        </div>
+    </div>
+</form>

@@ -8,7 +8,7 @@ $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $queryDelete = mysqli_query($config, "DELETE FROM abouts WHERE id='$id'");
-    header("location:?page=abouts&hapus=berhasil");
+    header("location:?page=add-abouts&hapus=berhasil");
 }
 ?>
 
@@ -19,10 +19,13 @@ if (isset($_GET['delete'])) {
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama</th>
                 <th>Profile</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Status</th>
+                <th class="justify-content-center" >Action</th>
             </tr>
         </thead>
         <tbody>
@@ -35,15 +38,12 @@ if (isset($_GET['delete'])) {
                     <td><?= $data['profile'] ?></td>
                     <td><?= $data['email'] ?></td>
                     <td><?= $data['phone'] ?></td>
-                    <td><?= $data['photo'] ?></td>
                     <td><?= $data['status'] ?></td>
-                    <td><?= $data['skills'] ?></td>
-
                     <td>
-                        <a href="" class="btn btn-success btn-sm "> Detail</a>
-                        <a href="add-about?edit=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Edit</a>
+                        <a href="add-about.php?edit=<?php echo $data['id'] ?> ?>" class="btn btn-success btn-sm "> Detail</a>
+                        <a href="add-about.php?edit=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
-                            href="add-about?delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
+                            href="user.php?delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>
