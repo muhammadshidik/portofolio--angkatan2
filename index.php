@@ -53,13 +53,13 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
             <a href="index.html" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename">DevFolio</h1>
+                <h1 class="sitename"><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="#hero" class="active">Home<br></a></li>
-                    <li><a href="#about">Tentang Kami</a></li> <?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?>
+                    <li><a href="#about">Tentang Kami</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -92,11 +92,11 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
         <!-- Hero Section -->
         <section id="hero" class="hero section dark-background">
 
-            <img src="assets/img/hero-img.jpg" alt="" data-aos="fade-in">
+            <img src="<?php echo isset($rowProfile['photo']) ? "admin/uploads/" . $rowProfile['photo'] : '' ?>" alt="" data-aos="fade-in">
 
             <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
-                <h2>I am Morgan Freeman</h2>
-                <p><span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+                <h2><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h2>
+                <p><span class="typed" data-typed-items="<?php echo isset($rowProfile['profile']) ? $rowProfile['profile'] : '' ?>"></span></p>
             </div>
 
         </section><!-- /Hero Section -->
@@ -111,13 +111,17 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
 
                         <div class="row justify-content-between gy-4">
                             <div class="col-lg-5">
-                                <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+                                <img src="<?php echo isset($rowProfile['photo']) ? "admin/uploads/" . $rowProfile['photo'] : '' ?>" alt="" class="img-fluid">
                             </div>
                             <div class="col-lg-7 about-info">
-                                <p><strong>Name: </strong> <span>Morgan Freeman</span></p>
-                                <p><strong>Profile: </strong> <span>full stack developer</span></p>
-                                <p><strong>Email: </strong> <span>contact@example.com</span></p>
-                                <p><strong>Phone: </strong> <span>(617) 557-0089</span></p>
+                                <p><strong>Name: </strong> <span><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></span></p>
+                                <p><strong>Profile: </strong> <span><?php echo isset($rowProfile['profile']) ? $rowProfile['profile'] : '' ?></span></p>
+                                <p><strong>Email: </strong> <span><?php echo isset($rowProfile['email']) ? $rowProfile['email'] : '' ?></span></p>
+                                <p><strong>Phone: </strong> <span><?php echo isset($rowProfile['phone']) ? $rowProfile['phone'] : '' ?></span></p>
+
+
+                                <!-- <? echo isset($rowProfile['decription']) ? $rowProfile['description'] : ''  ?> -->
+
                             </div>
                         </div>
 
@@ -160,21 +164,7 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
                         <div class="about-me">
                             <h4>About me</h4>
                             <p>
-                                Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id
-                                imperdiet et, porttitor
-                                at sem. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla
-                                porttitor accumsan tincidunt.
-                            </p>
-                            <p>
-                                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
-                                porttitor volutpat. Vestibulum
-                                ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
-                            </p>
-                            <p>
-                                Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-                                Nulla porttitor accumsan
-                                tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                            </p>
+                                <?php echo isset($rowProfile['description']) ? $rowProfile['description'] : '' ?>
                         </div>
                     </div>
                 </div>
@@ -903,19 +893,19 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="Depan/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="Depan/assets/vendor/php-email-form/validate.js"></script>
+    <script src="Depan/assets/vendor/aos/aos.js"></script>
+    <script src="Depan/assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="Depan/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="Depan/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="Depan/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="Depan/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="Depan/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="Depan/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="Depan/assets/js/main.js"></script>
 
 </body>
 

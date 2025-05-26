@@ -7,12 +7,32 @@ if (isset($_POST['simpan'])) {
     //PROSES SIMPAN FOTO
     $photo = $_FILES['photo']['name'];
 
+    //terbaruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu (26/5)
+    $tmp_name = $_FILES['photo']['tmp_name'];
+
     // mencari apakah di dalem table profiles ada datanya, jika ada maka update, jika tidak ada maka insert
     // mysqli_num_row()
     $queryProfile = mysqli_query($config, "SELECT * FROM profiles ORDER BY id DESC");
     if (mysqli_num_rows($queryProfile) > 0) {
         $rowProfile = mysqli_fetch_assoc($queryProfile);
         $id = $rowProfile['id'];
+
+        //jika user upload gambar (terbaru 26/5 buat di punya gua)
+        if (!empty($photo)) {
+            $fileName = uniqid() . "_" . basename($photo);
+            $filePath = "uploads/" . $fileName;
+            unlink("uploads/" . $rowProfile['photo']);
+            move_uploaded_file($tmp_name, $filePath);
+        } else {
+            $update = mysqli_query($config, "UPDATE profiles SET 
+            profile_name='$profile_name',  description='$description', photo='$fileName' WHERE id ='$id'");
+            header("location:?page=manage-profile&ubah=berhasil");
+        }
+
+
+
+
+
         // perintah update
         $update = mysqli_query($config, "UPDATE profiles SET 
         profile_name='$profile_name',  description='$description' WHERE id ='$id'");
@@ -64,7 +84,7 @@ if (isset($_GET['del'])) {
         </div>
         <div class="mb-3">
             <label class="form-label">Description</label>
-            <textarea class="form-control" name="description" cols="30" rows="5"><?php echo !isset($row['description']) ? "" : $row['description'] ?></textarea>
+            <textarea id="summernote" class="form-control" name="description" cols="30" rows="5"><?php echo !isset($row['description']) ? "" : $row['description'] ?></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Photo</label>
