@@ -20,14 +20,14 @@ if (isset($_GET['delete'])) {
     <div align="right" class="mb-3">
         <a href="?page=manage-about" class="btn btn-primary">Tambah</a>
     </div>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" id="table">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Nama</th>
                 <th>Profile</th>
                 <th>Email</th>
-                <th>Phone</th> 
+                <th>Phone</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>

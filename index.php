@@ -6,6 +6,28 @@ include 'admin/config/koneksi.php';
 $queryProfile = mysqli_query($config, "SELECT * FROM abouts ORDER BY id DESC");
 $rowProfile = mysqli_fetch_assoc($queryProfile);
 
+
+if (isset($_POST['simpan'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    $query = mysqli_query($config, "INSERT INTO contacts (name, email, subject, message)
+     VALUES ('$name','$email','$subject','$message')");
+    if ($query) {
+        header("index.php");
+    } else {
+        echo "gagal";
+    }
+}
+?>
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -827,7 +849,7 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
                     </div>
                 </div>
 
-                <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
+                <form method="post" data-aos="fade-up" data-aos-delay="300">
                     <div class="row gy-4">
 
                         <div class="col-md-6">
@@ -851,7 +873,7 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
                             <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                            <button type="submit">Send Message</button>
+                            <button name="simpan" type="submit" class="btn btn-outline-success">Send</button>
                         </div>
 
                     </div>
