@@ -1,8 +1,8 @@
 <?php // Memulai blok kode PHP
-
 // Mengambil semua data dari tabel 'abouts' dan mengurutkannya berdasarkan 'id' secara menurun (DESC).
 // '$config' diasumsikan sebagai variabel koneksi ke database.
-$query = mysqli_query($config, "SELECT * FROM abouts ORDER BY id DESC");
+$query = mysqli_query($config, "SELECT * FROM summarys ORDER BY id DESC");
+
 // Mengambil semua baris hasil query sebagai array asosiatif.
 // Setiap baris akan menjadi elemen dalam array '$row', dengan nama kolom sebagai kunci.
 $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
@@ -10,8 +10,8 @@ $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 // Mengecek apakah ada parameter 'delete' yang dikirim melalui URL (metode GET).
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $queryDelete = mysqli_query($config, "DELETE FROM abouts WHERE id='$id'");
-    header("location:about.php?hapus=berhasil");
+    $queryDelete = mysqli_query($config, "DELETE FROM summarys WHERE id='$id'");
+    header("location:summary.php?hapus=berhasil");
 }
 ?>
 
@@ -24,9 +24,29 @@ if (isset($_GET['delete'])) {
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Profile</th>
-                <th>Email</th>
-                <th>Phone</th>
+                <th>alamat</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+             <tr>
+                <h1>education</h1>
+                <th>No</th>
+                <th>Jurusan</th>
+                <th>Tahun</th>
+                <th>Universitas</th>
+                <th>Deskripsi</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+             <tr>
+                <h1>Professional Experience</h1>
+                <th>No</th>
+                <th>Tahun</th>
+                <th>Posisi</th>
+                <th>Perusahaan</th>
+                <th>Kegiatan</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -42,14 +62,14 @@ if (isset($_GET['delete'])) {
                 <tr>
                     <td><?= $key + 1 ?></td>
                     <td><?= $data['name'] ?></td>
-                    <td><?= $data['profile'] ?></td>
-                    <td><?= $data['email'] ?></td>
+                    <td><?= $data['address'] ?></td>
                     <td><?= $data['phone'] ?></td>
+                    <td><?= $data['email'] ?></td>
                     <td><?= $data['status'] ?></td>
                     <td>
-                        <a href="manage-about.php?edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                        <a href="add-summary.php?edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
-                            href="manage-about.php?delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                            href="add-summary.php?delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php

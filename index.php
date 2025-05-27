@@ -22,13 +22,6 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-
-
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -152,9 +145,9 @@ if (isset($_POST['simpan'])) {
                             <h5>Skills</h5>
 
                             <div class="progress">
-                                <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
+                                <span class="skill"><span>HTML</span> <i class="val">50%</i></span>
                                 <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50"></div>
                                 </div>
                             </div><!-- End Skills Item -->
 
@@ -200,7 +193,7 @@ if (isset($_POST['simpan'])) {
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Resume</h2>
+                <h2><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
             </div><!-- End Section Title -->
 
