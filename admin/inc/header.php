@@ -54,7 +54,7 @@ $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="?page=summary">Summary</a></li>
-                            <li><a class="dropdown-item" href="">Education</a></li>
+                            <li><a class="dropdown-item" href="?page=education">Education</a></li>
                             <li><a class="dropdown-item" href="">Professional Experience</a></li>
                         </ul>
                     </li>

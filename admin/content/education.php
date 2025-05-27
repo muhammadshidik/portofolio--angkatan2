@@ -43,7 +43,8 @@ if (isset($_GET['delete'])) {
                     <td><?= $key + 1 ?></td>
                     <td><?= $data['major'] ?></td>
                     <td><?= $data['year'] ?></td>
-                    <td><?= $data['Description'] ?></td>
+                    <td><?= $data['university'] ?></td>
+                    <td><?= $data['description'] ?></td>
                     <td><?= $data['status'] ?></td>
                     <td>
                         <a href="add-education.php?edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
