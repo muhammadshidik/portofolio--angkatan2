@@ -10,6 +10,10 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
 $querySummary = mysqli_query($config, "SELECT * FROM summarys ORDER BY id DESC");
 $rowSummary = mysqli_fetch_assoc($querySummary);
 
+//2. query portofolio
+$queryCategories = mysqli_query($config, "SELECT * FROM categories ORDER BY id DESC");
+$rowCategories = mysqli_fetch_assoc($querySummary);
+
 //untuk menyimpan data dari formulir web ke database.
 // step:
 // Memeriksa apakah ada data yang dikirimkan dari form dengan nama tombol 'simpan'.
@@ -463,11 +467,8 @@ if (isset($_POST['simpan'])) {
 
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                         <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-product">Product</li>
-                        <li data-filter=".filter-branding">Branding</li>
-                        <li data-filter=".filter-books">Books</li>
-                    </ul><!-- End Portfolio Filters -->
+
+                    </ul>
 
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
@@ -496,7 +497,7 @@ if (isset($_POST['simpan'])) {
                             <div class="portfolio-info">
                                 <h4>Branding 1</h4>
                                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <a href="depan/assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                             </div>
                         </div><!-- End Portfolio Item -->
