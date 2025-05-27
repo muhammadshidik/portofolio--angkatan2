@@ -1,6 +1,34 @@
 <?php
 include 'config/koneksi.php';
 
+
+// Ini semacam penjaga pintu khusus. Dia akan memeriksa siapa yang mau masuk ke halaman ini.
+// Anggap saja situs web ini punya beberapa ruangan, dan ini adalah pintu masuk ke 'ruangan khusus'.
+
+// Si penjaga pintu bertanya: "Kamu punya kartu akses level berapa?
+// Kartu kamu bukan level 1, ya?"
+// '$_SESSION['level']' itu kayak nomor level yang tercatat di kartu aksesmu saat kamu login.
+// '!= 1' artinya "tidak sama dengan 1". Jadi, kalau nomor levelmu bukan 1, berarti kamu nggak punya akses istimewa.
+if ($_SESSION['level'] != 1) {
+    // Kalau jawaban dari pertanyaan tadi "iya, kartu saya bukan level 1",
+    // maka si penjaga pintu langsung bilang dengan nada tegas:
+    // echo "<h1> Anda tidak berhak kesini !! </h1>";
+
+    // Setelah itu, penjaga pintu menambahkan: "Nih, balik aja ke halaman awal (dashboard) kamu."
+    // Ini kayak ngasih tombol "Kembali" yang bisa kamu klik buat balik ke tempat yang boleh kamu akses.
+    // echo "<a href='dashboard.php' class='btn btn-warning'>Kembali<a/>";
+
+    // Terakhir, si penjaga pintu bilang: "Udah, cukup sampai sini aja.
+    // Kamu nggak boleh lihat apa-apa lagi di halaman ini."
+    // Perintah ini fungsinya buat langsung menghentikan semua proses di halaman itu,
+    // jadi kamu nggak bakal bisa ngintip atau ngelanjutin ke bagian halaman yang seharusnya rahasia.
+
+    // atau
+    header("location:dashboard.php?failed=access");
+    die;
+}
+
+
 //memunculkan/pilih semua data dari table user urutkan dari yang terbesar
 //ke terkecil
 

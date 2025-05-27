@@ -4,20 +4,20 @@
 // masukkan ke dalam table user (name, email, password) nilainya dari masing-masing inputan 
 //fungsi insert
 
-include "../config/koneksi.php";
+include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
-    $profile = $_POST['address'];
-    $email = $_POST['phone'];
-    $phone  = $_POST['email'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $email  = $_POST['email'];
     $status  = $_POST['status'];
 
- $query = mysqli_query($config, "INSERT INTO summary (name, address, phone, email, status) 
+    $query = mysqli_query($config, "INSERT INTO summarys (name, address, phone, email, status) 
  VALUES ('$name','$address','$phone','$email','$status')");
-        if ($query) {
-            header("location:?page=summary&tambah=berhasil");
-        }
+    if ($query) {
+        header("location:?page=summary&tambah=berhasil");
     }
+}
 
 //revisian ambil dari pak reza
 $header = isset($_GET['edit']) ? "Edit" : "Tambah";
@@ -34,7 +34,7 @@ if (isset($_POST['edit'])) {
 
     $queryUpdate = mysqli_query($config, "UPDATE summarys SET name='$name', address='$address', phone='$phone', email='$email', status='$status' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:content/summary.php?ubah=berhasil");
+        header("location:summary.php?ubah=berhasil");
     }
 }
 
@@ -59,19 +59,19 @@ if (isset($_POST['edit'])) {
             <label for="">Alamat * </label>
         </div>
         <div class="col-sm-10">
-            <input required name="profile" type="text"
+            <input required name="address" type="text"
                 class="form-control"
                 placeholder="Masukkan jabatan anda"
                 value="<?= isset($_GET['edit']) ? $rowEdit['address'] : '' ?>">
         </div>
     </div>
-    
+
     <div class="mb-3 row">
         <div class="col-sm-2">
             <label for="">No.hp * </label>
         </div>
         <div class="col-sm-10">
-            <input required name="email" type="text"
+            <input required name="phone" type="text"
                 class="form-control"
                 placeholder="Masukkan email anda"
                 value="<?= isset($_GET['edit']) ? $rowEdit['phone'] : '' ?>">

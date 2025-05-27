@@ -1,5 +1,7 @@
 <?php
-$query = mysqli_query($config, "SELECT * FROM users ORDER BY id DESC");
+// update terbaru tgl 27
+$query = mysqli_query($config, "SELECT level.name_level, users.* FROM users
+LEFT JOIN level ON level.id = users.id_level ORDER BY users.id DESC");
 $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 if (isset($_GET['delete'])) {
@@ -17,6 +19,7 @@ if (isset($_GET['delete'])) {
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama Level</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th></th>
@@ -28,10 +31,12 @@ if (isset($_GET['delete'])) {
                 <tr>
                     <!-- <td><?= $i++ ?></td> -->
                     <td><?= $key + 1 ?></td>
+                    <!-- //terbaru id level 27 05 -->
+                    <td><?= $data['name_level'] ?></td>
                     <td><?= $data['name'] ?></td>
                     <td><?= $data['email'] ?></td>
                     <td>
-                        <a href="tambah-user.php?edit=<?php echo $data['id'] ?>&level=<?php echo base64_encode($_SESSION['LEVEL']) ?>" class="btn btn-success btn-sm">Edit</a>
+                        <a href="?page=tambah-user&edit=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
                             href="user.php?delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
                     </td>

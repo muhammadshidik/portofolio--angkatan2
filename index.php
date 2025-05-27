@@ -1,26 +1,72 @@
 <?php
 include 'admin/config/koneksi.php';
 
-//query profiles
+//1. query aboutssss
 
 $queryProfile = mysqli_query($config, "SELECT * FROM abouts ORDER BY id DESC");
 $rowProfile = mysqli_fetch_assoc($queryProfile);
 
+//2. query Summary
+$querySummary = mysqli_query($config, "SELECT * FROM summarys ORDER BY id DESC");
+$rowSummary = mysqli_fetch_assoc($querySummary);
 
+//untuk menyimpan data dari formulir web ke database.
+// step:
+// Memeriksa apakah ada data yang dikirimkan dari form dengan nama tombol 'simpan'.
+// Ini biasanya terjadi saat pengguna mengklik tombol 'submit' pada formulir HTML.
 if (isset($_POST['simpan'])) {
+    // Jika tombol 'simpan' ditekan, maka kode di bawah ini akan dijalankan.
+
+    // Mengambil data yang dikirimkan melalui metode POST dari formulir HTML.
+    // $_POST adalah array superglobal di PHP yang berisi data yang dikirimkan
+    // dari formulir menggunakan metode POST.
+
+    // Mengambil nilai dari input 'name' dan menyimpannya di variabel $name.
     $name = $_POST['name'];
+    // Mengambil nilai dari input 'email' dan menyimpannya di variabel $email.
     $email = $_POST['email'];
+    // Mengambil nilai dari input 'subject' dan menyimpannya di variabel $subject.
     $subject = $_POST['subject'];
+    // Mengambil nilai dari input 'message' dan menyimpannya di variabel $message.
     $message = $_POST['message'];
 
+    // Membuat query SQL untuk memasukkan data ke dalam tabel 'contacts'.
+    // 'INSERT INTO contacts' berarti kita ingin menambahkan baris baru ke tabel bernama 'contacts'.
+    // '(name, email, subject, message)' adalah daftar kolom di tabel tempat data akan dimasukkan.
+    // "VALUES ('$name','$email','$subject','$message')" adalah nilai-nilai yang akan dimasukkan
+    // ke masing-masing kolom sesuai urutannya.
+    // '$config' diasumsikan sebagai variabel koneksi ke database yang sudah dibuat sebelumnya.
     $query = mysqli_query($config, "INSERT INTO contacts (name, email, subject, message)
-     VALUES ('$name','$email','$subject','$message')");
+                                    VALUES ('$name','$email','$subject','$message')");
+
+    // Memeriksa apakah proses query (penyimpanan data ke database) berhasil atau tidak.
     if ($query) {
-        header("index.php");
+        // Jika query berhasil (data berhasil disimpan ke database),
+        // maka pengguna akan dialihkan kembali ke halaman 'index.php'.
+        // header() digunakan untuk mengirimkan header HTTP mentah, dalam hal ini untuk pengalihan (redirect).
+        // CATATAN PENTING: Seharusnya ada 'Location: ' sebelum 'index.php' untuk redirect yang benar.
+        // Contoh: header("Location: index.php");
+        header("index.php"); // BARIS INI KEMUNGKINAN BESAR SALAH DAN HARUSNYA 'Location: index.php'
     } else {
+        // Jika query gagal (data tidak berhasil disimpan, mungkin ada kesalahan pada database atau query SQL),
+        // maka akan menampilkan pesan "gagal" di browser.
         echo "gagal";
     }
 }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -192,7 +238,7 @@ if (isset($_POST['simpan'])) {
         <section id="resume" class="resume section">
 
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
+            <div class="container section-title" data-aos="fade-up" name="name">
                 <h2><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
             </div><!-- End Section Title -->
@@ -205,10 +251,10 @@ if (isset($_POST['simpan'])) {
                         <h3 class="resume-title">Sumary</h3>
 
                         <div class="resume-item pb-0">
-                            <h4>Brandon Johnson</h4>
+                            <h4 name="name"><?php echo isset($rowSummary['name']) ? $rowSummary['name'] : '' ?></h4>
                             <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
                             <ul>
-                                <li>Portland par 127,Orlando, FL</li>
+                                <li name="address"><?php echo isset($rowSummary['address']) ? $rowSummary['address'] : '' ?></li>
                                 <li>(123) 456-7891</li>
                                 <li>alice.barkley@example.com</li>
                             </ul>

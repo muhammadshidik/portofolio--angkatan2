@@ -1,3 +1,9 @@
+<?php
+$id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
+
+
+?>
+
 <header class="shadow">
     <nav class="navbar navbar-expand-lg bg-body-white">
         <div class="container-fluid">
@@ -16,13 +22,16 @@
                             Page
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="?page=user">User</a></li>
+                            <!-- jika level sama dengan admin maka bisa dapat halaman user, bukan adamin jangan atau hilang -->
+                            <?php if ($id_level == 1): ?>
+                                <li><a class="dropdown-item" href="?page=user">User</a></li>
+                            <?php endif ?>
                             <li><a class="dropdown-item" href="?page=manage-profile">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                         </ul>
-                        
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?page=about">About</a>
@@ -49,7 +58,7 @@
                             <li><a class="dropdown-item" href="">Professional Experience</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Portofolio

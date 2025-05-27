@@ -17,7 +17,7 @@ if (isset($_GET['delete'])) {
 
 <div class="table-responsive">
     <div align="right" class="mb-3">
-        <a href="?page=manage-about" class="btn btn-primary">Tambah</a>
+        <a href="?page=add-summary" class="btn btn-primary">Tambah</a>
     </div>
     <table class="table table-bordered table-striped" id="table">
         <thead>
@@ -30,7 +30,7 @@ if (isset($_GET['delete'])) {
                 <th>Status</th>
                 <th>Action</th>
             </tr>
-             <tr>
+            <tr>
                 <h1>education</h1>
                 <th>No</th>
                 <th>Jurusan</th>
@@ -40,7 +40,7 @@ if (isset($_GET['delete'])) {
                 <th>Status</th>
                 <th>Action</th>
             </tr>
-             <tr>
+            <tr>
                 <h1>Professional Experience</h1>
                 <th>No</th>
                 <th>Tahun</th>
