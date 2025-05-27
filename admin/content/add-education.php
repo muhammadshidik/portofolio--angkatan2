@@ -62,7 +62,17 @@ if (isset($_POST['edit'])) {
                 value="<?= isset($_GET['edit']) ? $rowEdit['year'] : '' ?>">
         </div>
     </div>
-
+<div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Universitas * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="university" type="text"
+                class="form-control"
+                placeholder="Masukkan jurusan anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['university'] : '' ?>">
+        </div>
+    </div>div>
     <div class="mb-3 row">
         <div class="col-sm-2">
             <label for="">Deskripsi * </label>

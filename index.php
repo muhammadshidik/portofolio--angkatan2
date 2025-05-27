@@ -10,6 +10,13 @@ $rowProfile = mysqli_fetch_assoc($queryProfile);
 $querySummary = mysqli_query($config, "SELECT * FROM summarys ORDER BY id DESC");
 $rowSummary = mysqli_fetch_assoc($querySummary);
 
+
+//2. query education
+$queryEducation = mysqli_query($config, "SELECT * FROM educations ORDER BY id DESC");
+$rowEducation = mysqli_fetch_assoc($queryEducation);
+
+
+
 //2. query portofolio
 $queryCategories = mysqli_query($config, "SELECT * FROM categories ORDER BY id DESC");
 $rowCategories = mysqli_fetch_assoc($querySummary);
@@ -256,20 +263,20 @@ if (isset($_POST['simpan'])) {
 
                         <div class="resume-item pb-0">
                             <h4 name="name"><?php echo isset($rowSummary['name']) ? $rowSummary['name'] : '' ?></h4>
-                            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+                            <p><em><?php echo isset($rowSummary['description']) ? $rowSummary['description'] : '' ?></em></p>
                             <ul>
                                 <li name="address"><?php echo isset($rowSummary['address']) ? $rowSummary['address'] : '' ?></li>
-                                <li>(123) 456-7891</li>
-                                <li>alice.barkley@example.com</li>
+                                <li><?php echo isset($rowSummary['phone']) ? $rowSummary['phone'] : '' ?></li>
+                                <li><?php echo isset($rowSummary['email']) ? $rowSummary['email'] : '' ?></li>
                             </ul>
                         </div><!-- Edn Resume Item -->
 
                         <h3 class="resume-title">Education</h3>
                         <div class="resume-item">
-                            <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                            <h5>2015 - 2016</h5>
-                            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                            <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+                            <h4><?php echo isset($rowEducation['major']) ? $rowEducation['major'] : '' ?></h4>
+                            <h5><?php echo isset($rowEducation['year']) ? $rowEducation['year'] : '' ?></h5>
+                            <p><em><?php echo isset($rowEducation['university']) ? $rowEducation['university'] : '' ?></em></p>
+                            <p><?php echo isset($rowEducation['description']) ? $rowEducation['description'] : '' ?></p>
                         </div><!-- Edn Resume Item -->
 
                         <div class="resume-item">

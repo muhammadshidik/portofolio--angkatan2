@@ -24,9 +24,10 @@ if (isset($_GET['delete'])) {
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>alamat</th>
+                <th>Deskripsi</th>
+                <th>Alamat</th>
                 <th>phone</th>
-                <th>email</th>
+                <th>Email</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -62,6 +63,7 @@ if (isset($_GET['delete'])) {
                 <tr>
                     <td><?= $key + 1 ?></td>
                     <td><?= $data['name'] ?></td>
+                    <td><?= $data['description'] ?></td>
                     <td><?= $data['address'] ?></td>
                     <td><?= $data['phone'] ?></td>
                     <td><?= $data['email'] ?></td>

@@ -7,13 +7,14 @@
 include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
+        $description = $_POST['description'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email  = $_POST['email'];
     $status  = $_POST['status'];
 
-    $query = mysqli_query($config, "INSERT INTO summarys (name, address, phone, email, status) 
- VALUES ('$name','$address','$phone','$email','$status')");
+    $query = mysqli_query($config, "INSERT INTO summarys (name, description, address, phone, email, status) 
+ VALUES ('$name','$description', '$address','$phone','$email','$status')");
     if ($query) {
         header("location:?page=summary&tambah=berhasil");
     }
@@ -27,12 +28,13 @@ $rowEdit  = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
+        $description = $_POST['description'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email  = $_POST['email'];
     $status  = $_POST['status'];
 
-    $queryUpdate = mysqli_query($config, "UPDATE summarys SET name='$name', address='$address', phone='$phone', email='$email', status='$status' WHERE id='$id_user'");
+    $queryUpdate = mysqli_query($config, "UPDATE summarys SET name='$name', description = '$description', address='$address', phone='$phone', email='$email', status='$status' WHERE id='$id_user'");
     if ($queryUpdate) {
         header("location:summary.php?ubah=berhasil");
     }
@@ -56,12 +58,23 @@ if (isset($_POST['edit'])) {
     </div>
     <div class="mb-3 row">
         <div class="col-sm-2">
+            <label for="">Deskripsi * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="description" type="text"
+                class="form-control"
+                placeholder="isi deskripsi.."
+                value="<?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?>">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
             <label for="">Alamat * </label>
         </div>
         <div class="col-sm-10">
             <input required name="address" type="text"
                 class="form-control"
-                placeholder="Masukkan jabatan anda"
+                placeholder="Masukkan alamat anda"
                 value="<?= isset($_GET['edit']) ? $rowEdit['address'] : '' ?>">
         </div>
     </div>
