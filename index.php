@@ -15,7 +15,9 @@ $rowSummary = mysqli_fetch_assoc($querySummary);
 $queryEducation = mysqli_query($config, "SELECT * FROM educations ORDER BY id DESC");
 $rowEducation = mysqli_fetch_assoc($queryEducation);
 
-
+//3 query experience
+$queryExperience = mysqli_query($config, "SELECT * FROM experiences ORDER BY id DESC");
+$rowExperience = mysqli_fetch_assoc($queryExperience);
 
 //2. query portofolio
 $queryCategories = mysqli_query($config, "SELECT * FROM categories ORDER BY id DESC");
@@ -183,7 +185,7 @@ if (isset($_POST['simpan'])) {
 
                         <div class="row justify-content-between gy-4">
                             <div class="col-lg-5">
-                                <img src="<?php echo isset($rowProfile['photo']) ? "admin/uploads/" . $rowProfile['photo'] : '' ?>" alt="" class="img-fluid">
+                                <img src="admin/uploads/<?php echo isset($rowProfile['photo']) ? $rowProfile['photo'] : '' ?>" class="img-fluid" alt="">
                             </div>
                             <div class="col-lg-7 about-info">
                                 <p><strong>Name: </strong> <span><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></span></p>
@@ -241,6 +243,7 @@ if (isset($_POST['simpan'])) {
                     </div>
                 </div>
 
+
             </div>
 
         </section><!-- /About Section -->
@@ -250,8 +253,8 @@ if (isset($_POST['simpan'])) {
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up" name="name">
-                <h2><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <h2>Resume</h2>
+                <p>Berikut History Perjalanan saya :</p>
             </div><!-- End Section Title -->
 
             <div class="container">
@@ -279,45 +282,22 @@ if (isset($_POST['simpan'])) {
                             <p><?php echo isset($rowEducation['description']) ? $rowEducation['description'] : '' ?></p>
                         </div><!-- Edn Resume Item -->
 
-                        <div class="resume-item">
-                            <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                            <h5>2010 - 2014</h5>
-                            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                            <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-                        </div><!-- Edn Resume Item -->
 
                     </div>
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="resume-title">Professional Experience</h3>
                         <div class="resume-item">
-                            <h4>Senior graphic design specialist</h4>
-                            <h5>2019 - Present</h5>
-                            <p><em>Experion, New York, NY </em></p>
+                            <h4><?php echo isset($rowExperience['position']) ? $rowExperience['position'] : '' ?></h4>
+                            <h5><?php echo isset($rowExperience['year']) ? $rowExperience['year'] : '' ?></h5>
+                            <p><em><?php echo isset($rowExperience['company']) ? $rowExperience['company'] : '' ?> </em></p>
                             <ul>
-                                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+                                <li><?php echo isset($rowExperience['activity']) ? $rowExperience['activity'] : '' ?></li>
                             </ul>
-                        </div><!-- Edn Resume Item -->
-
-                        <div class="resume-item">
-                            <h4>Graphic design specialist</h4>
-                            <h5>2017 - 2018</h5>
-                            <p><em>Stepping Stone Advertising, New York, NY</em></p>
-                            <ul>
-                                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-                            </ul>
-                        </div><!-- Edn Resume Item -->
-
-                    </div>
-
+                        </div>
+                    </div><!-- Edn Resume Item -->
                 </div>
-
+            </div>
             </div>
 
         </section><!-- /Resume Section -->

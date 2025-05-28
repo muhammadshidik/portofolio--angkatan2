@@ -6,35 +6,36 @@
 
 include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
-    $major = $_POST['major'];
     $year = $_POST['year'];
-    $university = $_POST['university'];
-    $description = $_POST['description'];
+    $position = $_POST['position'];
+    $company = $_POST['company'];
+    $activity = $_POST['activity'];
     $status  = $_POST['status'];
 
-    $query = mysqli_query($config, "INSERT INTO educations (major, year, university, description, status) 
- VALUES ('$major','$year','$university','$description','$status')");
+    $query = mysqli_query($config, "INSERT INTO experiences (year, position, company, activity, status) 
+ VALUES ('$year','$position','$company','$activity','$status')");
     if ($query) {
-        header("location:?page=education&tambah=berhasil");
+        header("location:?page=experience&tambah=berhasil");
     }
 }
 
 //revisian ambil dari pak reza
 $header = isset($_GET['edit']) ? "Edit" : "Tambah";
 $id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
-$queryEdit = mysqli_query($config, "SELECT * FROM educations WHERE id='$id_user'");
+$queryEdit = mysqli_query($config, "SELECT * FROM experiences WHERE id='$id_user'");
 $rowEdit  = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
-    $major = $_POST['major'];
     $year = $_POST['year'];
-    $description = $_POST['description'];
+    $position = $_POST['position'];
+    $company = $_POST['company'];
+    $activity = $_POST['activity'];
     $status  = $_POST['status'];
 
 
-    $queryUpdate = mysqli_query($config, "UPDATE educations SET major='$major', year='$year', description='$decription',status='$status' WHERE id='$id_user'");
+    $queryUpdate = mysqli_query($config, "UPDATE experiences SET year='$year', position='$position', company='$company', activity='$activity', status='$status' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("?page=education&ubah=berhasil");
+        header("location:?page=experience&ubah=berhasil");
     }
 }
 
@@ -42,44 +43,45 @@ if (isset($_POST['edit'])) {
 <form action="" method="post" enctype="multipart/form-data">
     <div class="mb-3 row">
         <div class="col-sm-2">
-            <label for="">Jurusan * </label>
-        </div>
-        <div class="col-sm-10">
-            <input required name="major" type="text"
-                class="form-control"
-                placeholder="Masukkan jurusan anda"
-                value="<?= isset($_GET['edit']) ? $rowEdit['major'] : '' ?>">
-        </div>
-    </div>
-    <div class="mb-3 row">
-        <div class="col-sm-2">
             <label for="">Tahun * </label>
         </div>
         <div class="col-sm-10">
             <input required name="year" type="date"
                 class="form-control"
-                placeholder="Masukkan Tahun lulus anda"
+                placeholder="Masukkan Tahun kerja anda"
                 value="<?= isset($_GET['edit']) ? $rowEdit['year'] : '' ?>">
         </div>
     </div>
     <div class="mb-3 row">
         <div class="col-sm-2">
-            <label for="">Universitas * </label>
+            <label for="">Posisi * </label>
         </div>
         <div class="col-sm-10">
-            <input required name="university" type="text"
+            <input required name="position" type="text"
                 class="form-control"
-                placeholder="Masukkan jurusan anda"
-                value="<?= isset($_GET['edit']) ? $rowEdit['university'] : '' ?>">
+                placeholder="Masukkan posisi anda"
+                value="<?= isset($_GET['edit']) ? $rowEdit['position'] : '' ?>">
+        </div>
+
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-2">
+            <label for="">Perusahaan * </label>
+        </div>
+        <div class="col-sm-10">
+            <input required name="company" type="text"
+                class="form-control"
+                placeholder="Masukkan perusahaan anda bekerja."
+                value="<?= isset($_GET['edit']) ? $rowEdit['company'] : '' ?>">
         </div>
     </div>
 
     <div class="mb-3 row">
         <div class="col-sm-2">
-            <label for="">Deskripsi * </label>
+            <label for="">Kegiatan * </label>
         </div>
         <div class="col-sm-10">
-            <textarea id="summernote" class="form-control" name="description" cols="30" rows="5"><?php echo !isset($row['description']) ? "" : $row['description'] ?></textarea>
+            <textarea id="summernote" class="form-control" name="description" cols="30" rows="5"><?php echo !isset($row['activity']) ? "" : $row['activity'] ?></textarea>
         </div>
     </div>
 

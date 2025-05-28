@@ -7,7 +7,7 @@
 include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
-        $description = $_POST['description'];
+    $description = $_POST['description'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email  = $_POST['email'];
@@ -28,7 +28,7 @@ $rowEdit  = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
-        $description = $_POST['description'];
+    $description = $_POST['description'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email  = $_POST['email'];
@@ -36,7 +36,7 @@ if (isset($_POST['edit'])) {
 
     $queryUpdate = mysqli_query($config, "UPDATE summarys SET name='$name', description = '$description', address='$address', phone='$phone', email='$email', status='$status' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:summary.php?ubah=berhasil");
+        header("location:?page=summary&ubah=berhasil");
     }
 }
 

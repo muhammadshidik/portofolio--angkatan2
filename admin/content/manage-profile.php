@@ -27,7 +27,7 @@ if (isset($_POST['simpan'])) {
         } else {
             $update = mysqli_query($config, "UPDATE profiles SET 
             profile_name='$profile_name',  description='$description', photo='$fileName' WHERE id ='$id'");
-            header("location:?page=manage-profile&ubah=berhasil");
+            header("location:?page=about&ubah=berhasil");
         }
 
 

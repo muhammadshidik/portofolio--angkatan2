@@ -11,7 +11,7 @@ $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $queryDelete = mysqli_query($config, "DELETE FROM educations WHERE id='$id'");
-    header("location:education.php?hapus=berhasil");
+    header("location:?page=education&hapus=berhasil");
 }
 ?>
 
@@ -47,9 +47,9 @@ if (isset($_GET['delete'])) {
                     <td><?= $data['description'] ?></td>
                     <td><?= $data['status'] ?></td>
                     <td>
-                        <a href="add-education.php?edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                        <a href="?page=add-education&edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
-                            href="add-education.php?delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                            href="?page=education&delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php

@@ -11,7 +11,7 @@ $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $queryDelete = mysqli_query($config, "DELETE FROM summarys WHERE id='$id'");
-    header("location:summary.php?hapus=berhasil");
+    header("location:?page=summary&hapus=berhasil");
 }
 ?>
 
@@ -28,26 +28,6 @@ if (isset($_GET['delete'])) {
                 <th>Alamat</th>
                 <th>phone</th>
                 <th>Email</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <h1>education</h1>
-                <th>No</th>
-                <th>Jurusan</th>
-                <th>Tahun</th>
-                <th>Universitas</th>
-                <th>Deskripsi</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <h1>Professional Experience</h1>
-                <th>No</th>
-                <th>Tahun</th>
-                <th>Posisi</th>
-                <th>Perusahaan</th>
-                <th>Kegiatan</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -69,9 +49,9 @@ if (isset($_GET['delete'])) {
                     <td><?= $data['email'] ?></td>
                     <td><?= $data['status'] ?></td>
                     <td>
-                        <a href="add-summary.php?edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                        <a href="?page=add-summary&edit=<?php echo $data['id'] ?>" class="btn btn-outline-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
-                            href="add-summary.php?delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                            href="?page=summary&delete=<?php echo $data['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php

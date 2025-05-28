@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2025 at 07:10 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Waktu pembuatan: 28 Bulan Mei 2025 pada 04.37
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_porto_4`
+-- Database: `db_porto_2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `abouts`
+-- Struktur dari tabel `abouts`
 --
 
 CREATE TABLE `abouts` (
@@ -42,20 +42,17 @@ CREATE TABLE `abouts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `abouts`
+-- Dumping data untuk tabel `abouts`
 --
 
 INSERT INTO `abouts` (`id`, `name`, `profile`, `email`, `phone`, `photo`, `status`, `skills`, `description`, `created_ad`, `updated_at`) VALUES
-(58, 'Muhammad Siddiq', 'Front End Developer', 'sidiksadar11@gmail.com', '089684758768', 'siddiq.jpeg', 1, 'Menguasai Bahasa Pemrograman Java script', 'Dengan latar belakang pendidikan dalam administrasi, saya adalah seorang fresh graduate yang dapat menghadapi tantangan dengan percaya diri. Saya memiliki keterampilan multitasking yang kuat dan kemampuan untuk mengelola jadwal dengan efisien. Saya tertarik untuk belajar lebih banyak dan mendukung operasional perusahaan', '2025-05-25 15:18:44', '2025-05-25 15:18:44'),
-(59, 'asep', 'IT Developer', 'admin@gmail.com', '089684758768', 'PPKD.png', 1, 'Mengerti bahasa tumbuhan', 'Dengan latar belakang pendidikan dalam administrasi, saya adalah seorang fresh graduate yang dapat menghadapi tantangan dengan percaya diri. Saya memiliki keterampilan multitasking yang kuat dan kemampuan untuk mengelola jadwal dengan efisien. Saya tertarik untuk belajar lebih banyak dan mendukung operasional perusahaan', '2025-05-25 15:19:23', '2025-05-25 15:19:23'),
-(60, 'asep', 'jasa kuras laut', 'sidiksadar11@gmail.com', '089684758768', 'siddiq.jpeg', 1, 'Menguasai Bahasa Pemrograman Java script', '         Dengan latar belakang pendidikan dalam administrasi, saya adalah seorang fresh graduate yang dapat menghadapi tantangan dengan percaya diri. Saya memiliki keterampilan multitasking yang kuat dan kemampuan untuk mengelola jadwal dengan efisien. Saya tertarik untuk belajar lebih banyak dan mendukung operasional perusahaan', '2025-05-25 15:24:42', '2025-05-25 15:24:42'),
-(61, 'Hardianti', 'Web programming', 'admin@gmail.com', '089684758768', 'anime-night-sky-illustration.jpg', 1, 'Menguasai Bahasa Pemrograman Java script', '         ddddddddddddddddddd', '2025-05-26 15:39:30', '2025-05-26 15:39:30'),
-(62, 'Muhammad Siddiq', 'IT Development', 'Reihanprdn9@gmail.com', '085710590044', 'WebPPKD.jpg', 1, 'memahami bahasa biawak', '         sssssssssssssss', '2025-05-27 03:59:59', '2025-05-27 03:59:59');
+(65, 'Muhammad Reihan Perdana', 'Frontend ', 'Reihanprdn9@gmail.com', '085710590044', 'jokowi.jpg', 1, 'memahami bahasa biawak', '         vvvvvvvvvvvvvvvvvvvvvvvvvv', '2025-05-28 01:51:48', '2025-05-28 01:51:48'),
+(66, 'Muhammad Reihan Perdana', 'IT Development', 'Reihanprdn9@gmail.com', '085710590044', '836519_08305325082013_jokowi_metal.jpg', 1, 'memahami bahasa biawak', 'jakarta', '2025-05-28 02:21:26', '2025-05-28 02:21:26');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -64,7 +61,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -74,7 +71,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Struktur dari tabel `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -88,7 +85,7 @@ CREATE TABLE `contacts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=dec8 COLLATE=dec8_bin;
 
 --
--- Dumping data for table `contacts`
+-- Dumping data untuk tabel `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
@@ -104,7 +101,7 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `message`, `created_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `educations`
+-- Struktur dari tabel `educations`
 --
 
 CREATE TABLE `educations` (
@@ -119,17 +116,42 @@ CREATE TABLE `educations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `educations`
+-- Dumping data untuk tabel `educations`
 --
 
 INSERT INTO `educations` (`id`, `major`, `year`, `university`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Teknik Informatika', '2025', '', 'Halo! Saya adalah seorang profesional di bidang Teknologi Informasi dengan spesialisasi sebagai Web Developer. Saya memiliki ketertarikan yang tinggi terhadap dunia pemrograman, pengembangan web, dan teknologi digital yang terus berkembang.  Dengan latar belakang pendidikan dan pengalaman di bidang IT, saya terbiasa mengerjakan berbagai proyek pengembangan website, baik untuk kebutuhan personal, bisnis, maupun sistem informasi internal perusahaan. Saya menguasai beberapa teknologi web seperti:  Front-End: HTML, CSS, JavaScript, Bootstrap  Back-End: PHP, MySQL, dan dasar-dasar framework seperti Laravel  Tools: Git, VS Code, XAMPP  Saya memiliki kemampuan analisis yang baik, senang memecahkan masalah teknis, serta terus mengikuti perkembangan teknologi agar dapat memberikan solusi yang relevan dan efisien.  Bagi saya, menjadi Web Developer bukan hanya tentang menulis kode, tetapi juga menciptakan pengalaman digital yang fungsional, aman, dan user-friendly.', 1, '2025-05-27 12:58:38', NULL),
-(4, 'IT Support', '2025', 'Universitas Indraprasta PGRI', 'Halo! Saya adalah seorang profesional di bidang Teknologi Informasi dengan spesialisasi sebagai Web Developer. Saya memiliki ketertarikan yang tinggi terhadap dunia pemrograman, pengembangan web, dan teknologi digital yang terus berkembang.  Dengan latar belakang pendidikan dan pengalaman di bidang IT, saya terbiasa mengerjakan berbagai proyek pengembangan website, baik untuk kebutuhan personal, bisnis, maupun sistem informasi internal perusahaan. Saya menguasai beberapa teknologi web seperti:  Front-End: HTML, CSS, JavaScript, Bootstrap  Back-End: PHP, MySQL, dan dasar-dasar framework seperti Laravel  Tools: Git, VS Code, XAMPP  Saya memiliki kemampuan analisis yang baik, senang memecahkan masalah teknis, serta terus mengikuti perkembangan teknologi agar dapat memberikan solusi yang relevan dan efisien.  Bagi saya, menjadi Web Developer bukan hanya tentang menulis kode, tetapi juga menciptakan pengalaman digital yang fungsional, aman, dan user-friendly.', 1, '2025-05-27 16:57:04', NULL);
+(5, 'Teknik informatika', '2025', 'Universitas indraprasta PGRI', '', 1, '2025-05-27 23:49:20', '2025-05-28 01:17:10'),
+(6, 'Teknik informatika', '2025', 'Universitas indraprasta PGRI', 'saya suka dengan tantangan', 1, '2025-05-28 01:23:04', NULL),
+(7, 'Teknik informatika', '2025', 'Universitas indraprasta PGRI', '<ul><li>saya anak baik</li><li>saya suka makan</li></ul>', 1, '2025-05-28 02:10:15', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `levels`
+-- Struktur dari tabel `experiences`
+--
+
+CREATE TABLE `experiences` (
+  `id` int(11) NOT NULL,
+  `year` year(4) NOT NULL,
+  `position` varchar(50) NOT NULL,
+  `company` varchar(50) NOT NULL,
+  `activity` text NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `experiences`
+--
+
+INSERT INTO `experiences` (`id`, `year`, `position`, `company`, `activity`, `status`, `created_at`, `updated_at`) VALUES
+(9, '2025', 'Penjaga Lampu lilin', 'PT. Mencari cinta', 'menjaga lilin waktu sedang ngepet', 1, '2025-05-28 01:26:54', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `levels`
 --
 
 CREATE TABLE `levels` (
@@ -138,7 +160,7 @@ CREATE TABLE `levels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `levels`
+-- Dumping data untuk tabel `levels`
 --
 
 INSERT INTO `levels` (`id`, `name_level`) VALUES
@@ -148,7 +170,7 @@ INSERT INTO `levels` (`id`, `name_level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `portofolios`
+-- Struktur dari tabel `portofolios`
 --
 
 CREATE TABLE `portofolios` (
@@ -159,7 +181,7 @@ CREATE TABLE `portofolios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `portofolios`
+-- Dumping data untuk tabel `portofolios`
 --
 
 INSERT INTO `portofolios` (`id`, `id_category`, `name_porto`, `photo`) VALUES
@@ -175,7 +197,7 @@ INSERT INTO `portofolios` (`id`, `id_category`, `name_porto`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profiles`
+-- Struktur dari tabel `profiles`
 --
 
 CREATE TABLE `profiles` (
@@ -187,7 +209,7 @@ CREATE TABLE `profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `profiles`
+-- Dumping data untuk tabel `profiles`
 --
 
 INSERT INTO `profiles` (`id`, `profile_name`, `profesion`, `description`, `photo`) VALUES
@@ -196,7 +218,7 @@ INSERT INTO `profiles` (`id`, `profile_name`, `profesion`, `description`, `photo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `summarys`
+-- Struktur dari tabel `summarys`
 --
 
 CREATE TABLE `summarys` (
@@ -212,19 +234,16 @@ CREATE TABLE `summarys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=dec8 COLLATE=dec8_bin;
 
 --
--- Dumping data for table `summarys`
+-- Dumping data untuk tabel `summarys`
 --
 
 INSERT INTO `summarys` (`id`, `description`, `name`, `address`, `phone`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(3, '', 'Muhammad Siddiq', 'Jl. Tb. Simatupang', '089684758768', 'sidiksadar11@gmail.com', 1, '2025-05-27 04:09:47', '2025-05-27 04:09:47'),
-(4, 'description', 'Muhammad Siddiq', 'Jl. Karet Pasar Baru Barat, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250', '089684758768', 'sidiksadar11@gmail.com', 1, '2025-05-27 16:08:00', '2025-05-27 16:08:00'),
-(5, 'description', 'Muhammad Siddiq', 'Jl. Karet Pasar Baru Barat, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250', '089684758768', 'sidiksadar11@gmail.com', 1, '2025-05-27 16:10:58', '2025-05-27 16:10:58'),
-(6, 'Halo! Saya adalah seorang profesional di bidang Teknologi Informasi dengan spesialisasi sebagai Web Developer. Saya memiliki ketertarikan yang tinggi terhadap dunia pemrograman, pengembangan web, dan teknologi digital yang terus berkembang.  Dengan latar belakang pendidikan dan pengalaman di bidang IT, saya terbiasa mengerjakan berbagai proyek pengembangan website, baik untuk kebutuhan personal, bisnis, maupun sistem informasi internal perusahaan. Saya menguasai beberapa teknologi web seperti:  Front-End: HTML, CSS, JavaScript, Bootstrap  Back-End: PHP, MySQL, dan dasar-dasar framework seperti Laravel  Tools: Git, VS Code, XAMPP  Saya memiliki kemampuan analisis yang baik, senang memecahkan masalah teknis, serta terus mengikuti perkembangan teknologi agar dapat memberikan solusi yang relevan dan efisien.  Bagi saya, menjadi Web Developer bukan hanya tentang menulis kode, tetapi juga menciptakan pengalaman digital yang fungsional, aman, dan user-friendly.', 'Muhammad Siddiq', 'Jl. Karet Pasar Baru Barat, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250', '089684758768', 'sidiksadar11@gmail.com', 1, '2025-05-27 16:12:09', '2025-05-27 16:12:09');
+(13, 'saya suka dengan tantangan baru', 'Muhammad Reihan Perdana', 'Jl.Warakas II GGIIB NO5B RT005 RW02 KEL.WARAKAS KEC.TANJUNG PRIOK', 'Reihanprdn9@gmail.com', 'Reihanprdn9@gmail.com', 1, '2025-05-28 02:05:24', '2025-05-28 02:05:07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -239,7 +258,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `id_level`, `name`, `email`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -251,114 +270,126 @@ INSERT INTO `users` (`id`, `id_level`, `name`, `email`, `password`, `created_at`
 --
 
 --
--- Indexes for table `abouts`
+-- Indeks untuk tabel `abouts`
 --
 ALTER TABLE `abouts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contacts`
+-- Indeks untuk tabel `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `educations`
+-- Indeks untuk tabel `educations`
 --
 ALTER TABLE `educations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `levels`
+-- Indeks untuk tabel `experiences`
+--
+ALTER TABLE `experiences`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `levels`
 --
 ALTER TABLE `levels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `portofolios`
+-- Indeks untuk tabel `portofolios`
 --
 ALTER TABLE `portofolios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profiles`
+-- Indeks untuk tabel `profiles`
 --
 ALTER TABLE `profiles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `summarys`
+-- Indeks untuk tabel `summarys`
 --
 ALTER TABLE `summarys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `level_id_to_id_level` (`id_level`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `abouts`
+-- AUTO_INCREMENT untuk tabel `abouts`
 --
 ALTER TABLE `abouts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `contacts`
+-- AUTO_INCREMENT untuk tabel `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `educations`
+-- AUTO_INCREMENT untuk tabel `educations`
 --
 ALTER TABLE `educations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `levels`
+-- AUTO_INCREMENT untuk tabel `experiences`
+--
+ALTER TABLE `experiences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `levels`
 --
 ALTER TABLE `levels`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `portofolios`
+-- AUTO_INCREMENT untuk tabel `portofolios`
 --
 ALTER TABLE `portofolios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `profiles`
+-- AUTO_INCREMENT untuk tabel `profiles`
 --
 ALTER TABLE `profiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `summarys`
+-- AUTO_INCREMENT untuk tabel `summarys`
 --
 ALTER TABLE `summarys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;

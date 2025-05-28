@@ -4,7 +4,7 @@
 // masukkan ke dalam table user (name, email, password) nilainya dari masing-masing inputan 
 //fungsi insert
 
-// include "config/koneksi.php";
+include "config/koneksi.php";
 if (isset($_POST['simpan'])) {
     $name = $_POST['name'];
     $profile = $_POST['profile'];
@@ -16,13 +16,13 @@ if (isset($_POST['simpan'])) {
     //proses simpan foto
     $photo = $_FILES['photo']['name'];
     $size  = $_FILES['photo']['size'];
-// .png, jpg, jpeg
+    // .png, jpg, jpeg
     $ekstensi = ['png', 'jpg', 'jpeg'];
     // apakah user mengupload gambar dengan ekstensi tersebut, jika iya masukkan gambar ke table dan folder, jika tidak
     // error, ekstensi tidak ditemukan
     // in_array = 
 
-$ext = pathinfo($photo, PATHINFO_EXTENSION);
+    $ext = pathinfo($photo, PATHINFO_EXTENSION);
     if (!in_array($ext, $ekstensi)) {
         $error[] = "Mohon maaf, ekstensi file tidak ditemukan";
     } else {
@@ -47,16 +47,13 @@ if (isset($_POST['edit'])) {
     $profile = $_POST['profile'];
     $email = $_POST['email'];
     $phone  = $_POST['phone'];
-    $status  = $_POST['status'];
     $skills = $_POST['skills'];
-
-    $queryUpdate = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile', email='$email', phone='phone',status='$status', skills='$skills' WHERE id='$id_user'");
+    $status  = $_POST['status'];
+    $queryUpdate = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile', email='$email', phone='$phone', status='$status', skills='$skills' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:content/about.php?ubah=berhasil");
+        header("location:?page=about&ubah=berhasil");
     }
 }
-
-
 ?>
 
 
@@ -83,7 +80,7 @@ if (isset($_POST['edit'])) {
                 value="<?= isset($_GET['edit']) ? $rowEdit['profile'] : '' ?>">
         </div>
     </div>
-    
+
     <div class="mb-3 row">
         <div class="col-sm-2">
             <label for="">Email * </label>
@@ -119,12 +116,12 @@ if (isset($_POST['edit'])) {
     </div>
 
     <div class="mb-3 row">
-    <div class="col-sm-10">
-        <label class="form-label">Deskripsi * </label>
-        <textarea name ="description" class="form-control mb-3" style="width:450px ; height: 150px ; margin-left: 215px" value="<?php echo !isset($_GET['edit']) ? $rowEdit['description'] :'' ?>"cols="30" rows="5">
+        <div class="col-sm-10">
+            <label class="form-label">Deskripsi * </label>
+            <textarea name="description" class="form-control mb-3" style="width:450px ; height: 150px ; margin-left: 215px" value="<?php echo !isset($_GET['edit']) ? $rowEdit['description'] : '' ?>" cols="30" rows="5">
          </textarea>
-      </div>
-   </div>
+        </div>
+    </div>
 
     <div class="mb-3 row">
         <div class="col-sm-2">
