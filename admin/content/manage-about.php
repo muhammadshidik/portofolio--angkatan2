@@ -18,24 +18,44 @@ if (isset($_POST['simpan'])) {
     $size  = $_FILES['photo']['size'];
     // .png, jpg, jpeg
     $ekstensi = ['png', 'jpg', 'jpeg'];
-    // apakah user mengupload gambar dengan ekstensi tersebut, jika iya masukkan gambar ke table dan folder, jika tidak
-    // error, ekstensi tidak ditemukan
-    // in_array = 
+    //PROSES SIMPAN FOTO
+    $tmp_name = $_FILES['photo']['tmp_name'];
+    $filename = uniqid() . "_" . basename($photo);
+    $filepath = "uploads/" . $filename;
 
-    $ext = pathinfo($photo, PATHINFO_EXTENSION);
-    if (!in_array($ext, $ekstensi)) {
-        $error[] = "Mohon maaf, ekstensi file tidak ditemukan";
+    //Cari, apakah di dlm table profiles ada datanya? YA, update... TIDAK, insert.
+    $queryprofile = mysqli_query($config, "SELECT * FROM abouts ORDER BY id DESC");
+    if (mysqli_num_rows($queryprofile) > 0) {
+        $rowprofile = mysqli_fetch_assoc($queryprofile);
+        $id = $rowprofile['id'];
+
+        //Jika USER upload gambar
+        if (!empty($photo)) {
+            unlink("uploads/" . $rowprofile['photo']);
+            move_uploaded_file($tmp_name, $filepath);
+
+            $update = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile',email='$email',phone='$phone', photo='$filename', skills='$skills', description='$description' WHERE id = '$id'");
+            header("location:?page=manage-aboute&ubah=berhasil");
+        } else {
+            //Perintah Update
+            $update = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile',email='$email',phone='$phone', photo='$filename',skills='$skills', description='$description' WHERE id = '$id'");
+            header("location:?page=manage-about&ubah=berhasil");
+        }
     } else {
-        $query = mysqli_query($config, "INSERT INTO abouts (name, profile, email, phone, photo, status, skills, description)
-         VALUES ('$name','$profile','$email','$phone','$photo','$status','$skills','$description')");
-        if ($query) {
-            header("location:?page=about&tambah=berhasil");
+        //Perintah Insert
+        if (!empty($photo)) {
+            move_uploaded_file($tmp_name, $filepath);
+
+            //JIKA USER UPLOAD GAMBAR
+            $inputQ = mysqli_query($config, "INSERT INTO abouts (name, profile, email, phone, photo, skills, description) VALUES ('$name','$profile', '$email', '$phone', '$filename','$skills', '$description')");
+            header("location:?page=manage-about&tambah=berhasil");
+        } else {
+            //JIKA USER TIDAK UPLOAD GAMBAR
+            $inputQ = mysqli_query($config, "INSERT INTO abouts (name, profile, email, phone, photo, skills, description) VALUES ('$name','$profile', '$email', '$phone','$filename', '$skills', '$description')");
+            header("location:?page=manage-about&tambah=berhasil");
         }
     }
-    print_r($error);
-    die;
 }
-
 //revisian ambil dari pak reza
 $header = isset($_GET['edit']) ? "Edit" : "Tambah";
 $id_user = isset($_GET['edit']) ? $_GET['edit'] : '';
