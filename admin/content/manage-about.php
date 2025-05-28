@@ -35,11 +35,11 @@ if (isset($_POST['simpan'])) {
             move_uploaded_file($tmp_name, $filepath);
 
             $update = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile',email='$email',phone='$phone', photo='$filename', skills='$skills', description='$description' WHERE id = '$id'");
-            header("location:?page=manage-aboute&ubah=berhasil");
+            header("location:?page=aboute&ubah=berhasil");
         } else {
             //Perintah Update
             $update = mysqli_query($config, "UPDATE abouts SET name='$name', profile='$profile',email='$email',phone='$phone', photo='$filename',skills='$skills', description='$description' WHERE id = '$id'");
-            header("location:?page=manage-about&ubah=berhasil");
+            header("location:?page=about&ubah=berhasil");
         }
     } else {
         //Perintah Insert

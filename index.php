@@ -153,7 +153,7 @@ if (isset($_POST['simpan'])) {
         <!-- Hero Section -->
         <section id="hero" class="hero section dark-background">
 
-            <img src=<img src="admin/uploads/<?php echo isset($rowProfile['photo']) ? $rowProfile['photo'] : '' ?>" class="img-fluid" alt="">
+            <img src="admin/uploads/<?php echo isset($rowProfile['photo']) ? $rowProfile['photo'] : '' ?>" class="img-fluid" alt="">
 
             <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
                 <h2><?php echo isset($rowProfile['name']) ? $rowProfile['name'] : '' ?></h2>
