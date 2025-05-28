@@ -37,7 +37,7 @@ if (isset($_POST['simpan'])) {
     $query = mysqli_query($config, "INSERT INTO users (name, email, password)
      VALUES ('$name','$email','$password','$id_level')");
     if ($query) {
-        header("location:user.php?tambah=berhasil");
+        header("location:?page=tambah-user&tambah=berhasil");
         exit;
     }
 }
@@ -59,7 +59,7 @@ if (isset($_POST['edit'])) {
     $queryUpdate = mysqli_query($config, "UPDATE users SET id_level='$id_level', name='$name', email='$email', 
     password='$password' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:user.php?ubah=berhasil");
+        header("location:?page=user&ubah=berhasil");
     }
 }
 

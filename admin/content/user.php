@@ -1,13 +1,13 @@
 <?php
 // update terbaru tgl 27
-$query = mysqli_query($config, "SELECT level.name_level, users.* FROM users
-LEFT JOIN level ON level.id = users.id_level ORDER BY users.id DESC");
+$query = mysqli_query($config, "SELECT levels.name_level, users.* FROM users
+LEFT JOIN levels ON levels.id = users.id_level ORDER BY users.id DESC");
 $row = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $queryDelete = mysqli_query($config, "DELETE FROM users WHERE id='$id'");
-    header("location:user.php?hapus=berhasil");
+    header("location:?page=user&hapus=berhasil");
 }
 ?>
 
@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
                     <td>
                         <a href="?page=tambah-user&edit=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
-                            href="user.php?delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
+                            href="?page=user&delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>

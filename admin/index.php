@@ -39,7 +39,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Check if the password is correct
         $_SESSION['name'] = $row['name'];
         $_SESSION['uuid'] = $row['id'];
-        $_SESSION['LEVEL'] = $row['level_id'];
+        $_SESSION['LEVEL'] = $row['id_level'];
         header('Location: dashboard.php');
     } else {
         // Redirect to the login page with an error message
