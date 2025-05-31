@@ -1,7 +1,8 @@
 <?php
+// Baris ini memeriksa apakah variabel sesi bernama 'LEVEL' sudah diatur.
+// Jika sudah, nilainya akan diberikan ke $id_level.
+// Jika belum, $id_level akan diberi nilai string kosong.
 $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
-
-
 ?>
 
 <header class="shadow">
@@ -22,7 +23,6 @@ $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
                             Page
                         </a>
                         <ul class="dropdown-menu">
-                            <!-- jika level sama dengan admin maka bisa dapat halaman user, bukan adamin jangan atau hilang -->
                             <?php if ($id_level == 1): ?>
                                 <li><a class="dropdown-item" href="?page=user">User</a></li>
                             <?php endif ?>
@@ -31,7 +31,6 @@ $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
                                 <hr class="dropdown-divider">
                             </li>
                         </ul>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?page=about">About</a>
@@ -72,15 +71,15 @@ $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
 
                     <li class="nav-item">
                         <a class="nav-link" href="?page=contact">Contact</a>
-
+                    </li>
 
                 </ul>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php
+                            // Blok PHP ini kosong, tetapi kemungkinan besar di sinilah $_name akan diberi nilai.
                             ?>
-
                             <?php echo $_name ?>
                         </a>
                         <ul class="dropdown-menu">
@@ -88,8 +87,6 @@ $id_level = isset($_SESSION['LEVEL']) ? $_SESSION['LEVEL'] : '';
                         </ul>
                     </li>
                 </ul>
-
-
 
             </div>
         </div>

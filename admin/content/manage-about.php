@@ -135,10 +135,10 @@ if (isset($_POST['edit'])) {
         </div>
     </div>
 
-    <div class="mb-3 row">
+    <div class="mb-3 row ">
         <div class="col-sm-10">
             <label class="form-label">Deskripsi * </label>
-            <textarea name="description" class="form-control mb-3" style="width:450px ; height: 150px ; margin-left: 215px" value="<?php echo !isset($_GET['edit']) ? $rowEdit['description'] : '' ?>" cols="30" rows="5">
+            <textarea id="summernote" name="description" class="form-control mb-3" style="width:450px ; height: 150px ; margin-right: 215px"  value="<?php echo !isset($_GET['edit']) ? $rowEdit['description'] : '' ?>" cols="30" rows="5">
          </textarea>
         </div>
     </div>
