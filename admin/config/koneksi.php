@@ -6,7 +6,7 @@ $hostusername = "root";
 // Mendefinisikan variabel untuk password database. Di sini dikosongkan, yang berarti tidak ada password.
 $hostpassword = "";
 // Mendefinisikan variabel untuk nama database yang akan dihubungkan.
-$hostdatabase = "db_porto_2";
+$hostdatabase = "db_porto_4";
 
 // Mencoba membuat koneksi ke database MySQL menggunakan fungsi mysqli_connect().
 // Parameter yang diberikan adalah hostname, username, password, dan nama database.
@@ -18,4 +18,3 @@ if (!$config) {
     // Menampilkan pesan "Koneksi gagal" jika koneksi ke database tidak berhasil.
     echo "Koneksi gagal";
 }
-?>

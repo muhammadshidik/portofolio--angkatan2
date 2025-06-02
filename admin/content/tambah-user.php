@@ -59,7 +59,7 @@ if (isset($_POST['edit'])) {
     $queryUpdate = mysqli_query($config, "UPDATE users SET id_level='$id_level', name='$name', email='$email', 
     password='$password' WHERE id='$id_user'");
     if ($queryUpdate) {
-        header("location:?page=user&ubah=berhasil");
+        header("page=user&ubah=berhasil");
     }
 }
 

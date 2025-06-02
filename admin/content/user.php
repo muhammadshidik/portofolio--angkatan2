@@ -38,11 +38,16 @@ if (isset($_GET['delete'])) {
 <div class="table-responsive">
     <div align="right" class="mb-3">
         <a href="?page=tambah-user" class="btn btn-primary">Tambah</a>
-        </div>
+    </div>
     <table class="table table-bordered table-striped" id="table">
         <thead>
             <tr>
-                <th>No</th>           <th>Nama Level</th>   <th>Nama</th>         <th>Email</th>        <th></th>             </tr>
+                <th>No</th>
+                <th>Nama Level</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
             <?php
@@ -61,9 +66,9 @@ if (isset($_GET['delete'])) {
                         <a href="?page=tambah-user&edit=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Edit</a>
                         <a onclick="return confirm('Are you sure??')"
                             href="?page=user&delete=<?php echo $data['id'] ?>" class="btn btn-warning btn-sm">Delete</a>
-                        </td>
+                    </td>
                 </tr>
             <?php endforeach ?>
-            </tbody>
+        </tbody>
     </table>
 </div>

@@ -17,6 +17,7 @@ if (isset($_GET['delete'])) {
                 <th>Email</th>
                 <th>Subjek</th>
                 <th>Pesan</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@ if (isset($_GET['delete'])) {
                     <td><?= $data['email'] ?></td>
                     <td><?= $data['subject'] ?></td>
                     <td><?= $data['message'] ?></td>
+                    <td><a href="?page=balas-pesan&idpesan=<?php echo $data['id'] ?>" class="btn btn-success btn-sm">Balas Pesan</a></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
