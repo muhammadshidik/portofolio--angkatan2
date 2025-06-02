@@ -11,7 +11,7 @@ if (isset($_POST['kirim_pesan'])) {
     $message = $_POST['message'];
     $email =  $_POST['email'];
 
-    $headers = "FROM : sidiksadar11@gmail.com\r\n" .
+    $headers = "From : sidiksadar11@gmail.com\r\n" .
         "Reply-To : sidiksadar11@gmail.com\r\n" .
         "Content-Type : text/plain; charset=UTF-8 \r\n" .
         "MIME-Version : 1.0\r\n";
