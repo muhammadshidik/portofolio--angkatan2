@@ -1,10 +1,11 @@
 <?php
 
 if (isset($_GET['idPesan'])) {
+    $getid = $_GET['idPesan'];
+    $selectPesan = mysqli_query($config, "SELECT * FROM contacts WHERE id = $getid");
+    $rowPesan = mysqli_fetch_assoc($selectPesan);
 }
-$getid = $_GET['idPesan'];
-$selectPesan = mysqli_query($config, "SELECT * FROM contacts WHERE id = $getid");
-$rowPesan = mysqli_fetch_assoc($selectPesan);
+
 if (isset($_POST['kirim_pesan'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
