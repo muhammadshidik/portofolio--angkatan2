@@ -9,7 +9,7 @@ if (isset($_GET['idPesan'])) {
 if (isset($_POST['kirim_pesan'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
-    $email = $rowPesan['email'];
+    $email =  $_POST['email'];
 
     $headers = "FROM : sidiksadar11@gmail.com\r\n" .
         "Reply-To : sidiksadar11@gmail.com\r\n" .
@@ -32,7 +32,7 @@ if (isset($_POST['kirim_pesan'])) {
             <input required name="name" type="text"
                 class="form-control"
                 placeholder="Masukkan nama anda"
-                value="<?php echo $rowPesan['name'] ?>">
+                value="<?php echo isset($_GET['edit']) ? $rowPesan['name'] : '' ?>">
         </div>
     </div>
     <div class="mb-3 row">
@@ -43,7 +43,7 @@ if (isset($_POST['kirim_pesan'])) {
             <input required name="email" type="text"
                 class="form-control"
                 placeholder="exmple:joko@gmail.com"
-                value="<?php echo $rowPesan['email'] ?>">
+                value="<?php echo isset($_GET['edit']) ? $rowPesan['email'] : '' ?>">
         </div>
     </div>
     <div class="mb-3 row">
@@ -51,10 +51,10 @@ if (isset($_POST['kirim_pesan'])) {
             <label for="">Subject * </label>
         </div>
         <div class="col-sm-10">
-            <input required name="Subject" type="text"
+            <input required name="subject" type="text"
                 class="form-control"
                 placeholder=""
-                value="<?php echo $rowPesan['name'] ?>">
+                value="<?php echo isset($_GET['edit']) ?  $rowPesan['name'] : '' ?>">
         </div>
     </div>
 
@@ -63,24 +63,12 @@ if (isset($_POST['kirim_pesan'])) {
             <label for="">Message * </label>
         </div>
         <div class="col-sm-10">
-            <textarea id="summernote" class="form-control" name="description" cols="30" rows="5"><?php echo $rowPesan['message'] ?></textarea>
-        </div>
-    </div>
-
-    <div class="mb-3 row">
-        <div class="col-sm-2">
-            <label for="">Email * </label>
-        </div>
-        <div class="col-sm-10">
-            <input required name="email" type="text"
-                class="form-control"
-                placeholder="Masukkan kemampuan anda"
-                value="<?= isset($_GET['edit']) ? $rowEdit['email'] : '' ?>">
+            <textarea id="summernote" class="form-control" name="message" cols="30" rows="5" style="height:500px"><?php echo isset($_GET['edit']) ?  $rowPesan['message'] : ''?></textarea>
         </div>
     </div>
 
     </div>
-    <div class="mb-3 row">
+    <div class="mb-3 row ms-3">
         <div class="col-sm-12">
             <button name="kirim_pesan" type="submit"
                 class="btn btn-primary">Kirim Pesan</button>
